@@ -56,11 +56,17 @@ class _notepageState extends State<Notepage>{
               child:  Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Center(child: Text("${notes[index]["title"]}",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold,color: Colors.amber),)),
+                Row(mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    Center(child: Text("${notes[index]["title"]}",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold,color: Colors.amber),)),
+                    SizedBox(width: 20,),
+                    IconButton(onPressed: (){}, icon: Icon(Icons.edit,color: Colors.amber,))
+                  ],
+                ),
                 Text("${notes[index]["category"]}",style: TextStyle(fontSize: 18,color: Colors.grey),),
                 Text("${notes[index]["description"]}",style: TextStyle(fontSize: 15,color: Colors.grey),),
                 
-                SizedBox(height: 100,),
+                SizedBox(height: 90,),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
