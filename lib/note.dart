@@ -1,4 +1,3 @@
-import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
@@ -26,15 +25,17 @@ class _notepageState extends State<Notepage>{
 
   openbox()async{
     box=await Hive.openBox("mybox");
-    loadTodoItems();
+    loadNotes();
   }
 
-    void loadTodoItems(){
-    List<Map<String,String>>? task=box.get("notes")?.cast<String>();
-    print("tasks loaded:$task");
-    setState(() {
-      notes=task!;
-    });
+    void loadNotes(){
+    List<Map<String,String>>? notesitem=box.get("notes")?.cast<String>();
+    print("tasks loaded:$notes");
+    if (notesitem != null) {
+      setState(() {
+        notes = List<Map<String, String>>.from(notesitem);
+      });
+    }
     }
 
     void edit(int index){
